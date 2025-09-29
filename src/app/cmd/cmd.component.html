@@ -1,0 +1,75 @@
+<div id="cmd" class="section-container center">
+    <div #terminalContainer class="terminal column">
+        <div class="header">
+            <img (click)="scroll.goToSection('main', 'landing-page')" src="img/close.svg">
+        </div>
+
+        
+        <div #contentContainer [class.no-scroll]="localRequests.isEditing" class="content-container" (click)="focusInput($event)">
+            <div class="greeting">
+                <span>Type 'help' to see available commands.</span>
+                <br><br>
+                <span>Tip: try '--man' behind a command to see how it works.</span>
+                <br>
+                <span>(example: 'ping --man')</span>
+                <br><br>
+            </div>
+            
+            @if(executedCommands.length) {
+                <div class="executed-commands-container">
+                    @for(executedCommand of executedCommands; track $index) {
+                        <div class="row executed-command-line gap-5">
+                            <span class="bold">root&#64;<span class="user-color">guest</span>:~{{ executedCommand.path }}$</span>
+                            <span>{{ executedCommand.command }}</span>
+                        </div>
+                        @if(isCommandSent) {
+                            @if(localRequests.isEditing) {
+                                <div class="nano-container column between" [contentEditable]="localRequests.isEditing">
+                                    <header class="row">
+                                        <span>GNU nano 6.2</span>
+                                        <span>{{ localRequests.openedFile.name }}</span>
+                                    </header>
+                                    <textarea #nanoInput [(ngModel)]="localRequests.openedFile.data" (keydown)="selectCommand($event)"></textarea>
+                                    <div class="nano-commands row gap-25 left">
+                                        <div class="row gap-10">
+                                            <span>^X</span>
+                                            <button (click)="exitNano($event)">Exit</button>
+                                        </div>
+                                        <div class="row gap-10">
+                                            <span>^O</span>
+                                            <button (click)="saveAndExitNano($event)">Save and Exit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            } @else if(executedCommand.command === 'help') {
+                                <app-help [availableCommands]="availableCommands"></app-help>
+                            } @else if(executedCommand.command === 'cat logs.txt') {
+                                @for(log of logs; track $index) {
+                                    <div class="row left log-container gap-20">
+                                        <span>{{ log.timestamp }}</span>
+                                        <span>{{ log.command }}</span>
+                                    </div>
+                                }
+                            } @else if(executedCommand.qrPath ) {
+                                <img [src]="executedCommand.qrPath" alt="QR">
+                            } @else {
+                                <pre>{{ executedCommand.output }}</pre>
+                            }
+                        }
+                    }
+                </div>
+            }
+            <div class="input-line row gap-5" [class.none]="localRequests.isInputPassword" [class.isFetchingOrEditing]="localRequests.isEditing" id="input-line">
+                <span class="bold" [class.isFetchingOrEditing]="httpRequests.isFetching || localRequests.isEditing">root&#64;<span class="user-color">guest</span>:~{{ currentPathString }}$</span>
+                <textarea #commandInput autoGrow [(ngModel)]="command" (keydown)="selectCommand($event, command)"></textarea>
+            </div>
+            <div class="row gap-15 password-input-container" [class.none]="!localRequests.isInputPassword">
+                <span>Password:</span>
+                <input #inputPassword type="password" [(ngModel)]="inputPw" (keydown.enter)="checkPassword(inputPw)">
+            </div>
+            @if(httpRequests.isPinging) {
+                <button class="stop-ping" (click)="stopPing()">Stop</button>
+            }
+        </div>
+    </div>
+</div>

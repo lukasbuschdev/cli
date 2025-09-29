@@ -1,0 +1,36 @@
+<div id="legal-notice" class="section-container column center gap-20">
+    <div class="right img-container">
+        <img src="img/close.svg" (click)="scroll.goToSection('main')">
+    </div>
+
+    <div class="column gap-40 center">
+        <div class="column gap-40">
+            <h2>{{ 'legal-notice-bold' | translate }}</h2>
+            <div class="column gap-10">
+                <span>Lukas Busch</span>
+                <span>Calle 41 595</span>
+                <span>97000 {{ 'city' | translate }}</span>
+                <span>{{ 'country' | translate }}</span>
+            </div>
+        </div>
+    
+        <div class="contact-container column gap-40">
+            <div class="column gap-40">
+                <h3>{{ 'conatct' | translate }}</h3>
+                <div class="column gap-10">
+                    <div class="center">
+                        <a href="tel:+529993518061">+52 999 351 80 61</a>
+                    </div>
+                    <div class="center">
+                        <a>webdeveloper&#64;lukasbusch.dev</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row gap-20 center">
+                <span>{{ 'source' | translate }}:</span>
+                <a href="https://www.e-recht24.de">eRecht24</a>
+            </div>
+        </div>
+    </div>
+</div>

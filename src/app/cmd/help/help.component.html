@@ -1,0 +1,12 @@
+<span>Available commands:</span><br><br><br>
+<div class="row gap-50 help-commands">
+    <span class="command">COMMAND</span>
+    <span class="description">DESCRIPTION</span>
+</div>
+<br>
+@for(availableCommand of availableCommands; track $index) {
+    <div class="row gap-50 help-commands">
+        <span class="command">{{ availableCommand.command }} [--man]</span>
+        <span class="description">{{ availableCommand.description }}</span>
+    </div><br>
+}

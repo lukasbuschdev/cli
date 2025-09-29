@@ -1,0 +1,24 @@
+@use 'variables' as *;
+
+span {
+    // font-family: 'OCRAbyBT', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--txt-white);
+}
+
+.help-commands {
+    .command {
+        width: 30%;
+    }
+
+    .description {
+        width: 70%;
+    }
+}
+
+@media(max-width: 650px) {
+    span {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,276 @@
+@use 'variables' as *;
+
+:host {
+    --terminal-bg: #{$dark-blue-opacity};
+}
+
+* {
+    user-select: text;
+}
+
+.section-container {
+    height: 100vh;
+    height: 100dvh;
+    width: 100%;
+}
+
+.terminal {
+    width: 100%;
+    max-width: 1440px;
+    height: 75vh;
+    max-height: 800px;
+    background-color: var(--terminal-bg);
+    backdrop-filter: blur(4px);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 7px $blue-hover;
+}
+
+.header {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: $dark-blue;
+    padding: 0 5px;
+
+    img {
+        height: 15px;
+        width: 15px;
+        object-fit: contain;
+
+        @media(hover: hover) {
+            &:hover {
+                cursor: pointer;
+                filter: brightness(0.75);
+            }
+        }
+    }
+}
+
+.content-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+    overflow: auto;
+
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+
+    /* WebKit (Chrome, Edge, Safari) */
+    &::-webkit-scrollbar {
+        width: 6px;   /* thin */
+        height: 6px;  /* thin for horizontal */
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent; /* transparent track */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.4); /* semi-transparent thumb */
+        border-radius: 3px;
+    }
+
+    span, pre {
+        // font-family: 'OCRAbyBT', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: var(--txt-white);
+    }
+
+    .user-color {
+        color: rgb(190, 110, 254) !important;
+        font-weight: 600;
+    }
+
+    .path-color {
+        color: rgb(181, 255, 146);
+    }
+
+    pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-x: auto;
+        outline: none;
+    }
+
+    .executed-commands-container {
+        height: fit-content;
+        
+        span {
+            white-space: pre-wrap;
+            font-size: 1.2rem;
+        }
+    }
+
+    .input-line {
+        align-items: flex-start;
+        
+        textarea {
+            width: 100%;
+            font-size: 1.1rem;
+            // font-family: 'OCRAbyBT', sans-serif;
+            font-weight: 400;
+            color: var(--txt-white);
+            border: none;
+            background-color: transparent;
+            resize: none;
+            outline: none;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        textarea[autoGrow] {
+            height: 1.4rem;
+        }
+    }
+
+    .nano-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+
+        header {
+            width: 100%;
+            height: 30px;
+            background-color: $white;
+            padding: 5px 10px;
+            
+            span {
+                width: 50%;
+                text-align: start;
+                color: $grey;
+                font-size: 1rem;
+            }
+        }
+        
+        textarea {
+            width: 100%;
+            height: 100%;
+            font-size: 1rem;
+            // font-family: 'OCRAbyBT', sans-serif;
+            font-weight: 400;
+            background-color: $grey;
+            color: var(--txt-white);
+            border: none;
+            resize: none;
+            outline: none;
+            overflow: auto;
+        }
+
+        .nano-commands {
+            width: 100%;
+            background-color: $grey;
+
+            &:hover {
+                cursor: default;
+            }
+        
+            span {
+                font-size: 1rem;
+            }
+        
+            span:first-of-type {
+                background-color: var(--txt-white);
+                color: $grey;
+                padding: 2px 1px;
+            }
+        
+            button {
+                color: $white;
+                background-color: transparent;
+            }
+        } 
+    }
+
+    .stop-ping {
+        display: none;
+    }
+
+    .log-container {
+        width: 100%;
+        align-items: flex-start;
+        
+        span {
+            width: 50%;
+        }
+    }
+}
+
+.password-input-container {
+    input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: var(--txt-white);
+        letter-spacing: 3px;
+        font-size: 1rem;
+    }
+}
+
+.greeting span {
+    font-size: 1.2rem;
+}
+
+.bold {
+    font-weight: 600 !important;
+    color: $blue !important;
+}
+
+.isFetchingOrEditing {
+    gap: 0;
+    display: none;
+}
+
+.none {
+    display: none;
+    height: 0;
+    gap: 0;
+}
+
+@media(max-width: 650px) {
+    .section-container {
+        padding: 0;
+    }
+    
+    .terminal {
+        height: 100vh;
+        height: 100dvh;
+        max-height: unset;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+
+        .content-container {
+            span, textarea, pre, input, button {
+                font-size: 0.9rem;
+            }
+
+            .executed-command-line,
+            .input-line {
+                flex-wrap: wrap;
+            }
+        }
+    }
+
+    .stop-ping {
+        position: fixed;
+        display: block !important;
+        bottom: 0;
+        right: 0;
+        background-color: $blue;
+        color: $dark-blue;
+        border: none;
+        padding: 10px 15px;
+    }
+}
