@@ -98,6 +98,10 @@ export const AVAILABLE_COMMANDS: typeCommandList[] = [
     description: 'Displays browser storage details, including quota usage from the Storage API, keys and sizes in local/session storage, and whether IndexedDB is supported.'
   },
   {
+    command: 'perf [--top N] [--json]',
+    description: 'Captures a snapshot of page performance metrics, including navigation type, time to first byte (TTFB), DOMContentLoaded, load event, paint timings (FP/FCP/LCP), cumulative layout shift (CLS), JS heap usage (if available), and the top slowest/largest resource requests.'
+  },
+  {
     command: 'history',
     description: 'Displays the list of all commands executed during the current terminal session.',
   },

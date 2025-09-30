@@ -475,5 +475,22 @@ export const EXPLAIN: Record<string, Explain> = {
       'Reports whether IndexedDB is supported.',
       'Equivalent real CLI: none. This is a browser-only feature without direct Linux/Unix counterpart.'
     ]
+  },
+
+  perf: {
+    name: 'perf',
+    synopsis: 'perf [--top N] [--json]',
+    purpose: 'One-shot snapshot of page performance: navigation type, TTFB, DCL, load, paint (FP/FCP), LCP, CLS, memory (if available), and slowest/largest resources.',
+    examples: [
+      { cmd: 'perf', why: 'Get a quick overview of current page performance timings.' },
+      { cmd: 'perf --top 5', why: 'List the top 5 slowest and largest resource requests.' },
+      { cmd: 'perf --json', why: 'Dump raw metrics and resource entries as JSON.' }
+    ],
+    notes: [
+      'Uses Performance APIs: NavigationTiming, ResourceTiming, PaintTiming, and (where available) Largest Contentful Paint (LCP) and Cumulative Layout Shift (CLS).',
+      'Some metrics need browser support and may be unavailable or partial (especially LCP/CLS without buffering).',
+      'Memory readings (`performance.memory`) are non-standard and mostly available in Chromium-based browsers.',
+      'Equivalent real CLI: none (browser-only). Closest desktop analogs are Lighthouse or WebPageTest.'
+    ]
   }
 };

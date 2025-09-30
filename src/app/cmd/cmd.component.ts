@@ -52,6 +52,7 @@ import { HistoryService } from '../services/local-commands/history.service';
 import { BatteryService } from '../services/local-commands/battery.service';
 import { NetworkinfoService } from '../services/local-commands/networkinfo.service';
 import { StorageService } from '../services/local-commands/storage.service';
+import { PerfService } from '../services/local-commands/perf.service';
 
 @Component({
   selector: 'app-cmd',
@@ -92,6 +93,7 @@ export class CmdComponent {
   batteryService = inject(BatteryService);
   networkinfoService = inject(NetworkinfoService);
   storageService = inject(StorageService);
+  perfService = inject(PerfService);
 
   // HTTP COMMANDS SERVICES
   pingService = inject(PingService);
@@ -456,6 +458,10 @@ export class CmdComponent {
 
   storage(command: string): void {
     this.storageService.storage(command, this.executedCommands, this.currentPathString);
+  }
+
+  perf(command: string): void {
+    this.perfService.perf(command, this.executedCommands, this.currentPathString);
   }
 
 

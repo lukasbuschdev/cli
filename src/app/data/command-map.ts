@@ -41,5 +41,6 @@ export const COMMAND_CONFIG: typeCommandMap = {
   ciphers: 'ciphers',
   tlschain: 'tlschain',
   networkinfo: 'networkinfo',
-  storage: 'storage'
+  storage: 'storage',
+  perf: 'perf'
 };
