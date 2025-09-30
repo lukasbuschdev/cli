@@ -7,6 +7,10 @@ import { EXPLAIN } from '../data/command-explain';
 export class UtilsService {
   private sessionStart = Date.now();
 
+  goToPortfolio(): void {
+    location.href = 'https://lukasbusch.dev/main';
+  }
+
   generateRandomId(): number {
     return Math.floor(Math.random() * (70000 - 30000)) + 30000;
   }

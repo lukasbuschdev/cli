@@ -1,7 +1,7 @@
 <div id="cmd" class="section-container center">
     <div #terminalContainer class="terminal column">
         <div class="header">
-            <img (click)="scroll.goToSection('main', 'landing-page')" src="img/close.svg">
+            <img (click)="utils.goToPortfolio()" src="img/close.svg">
         </div>
 
         
@@ -19,7 +19,7 @@
                 <div class="executed-commands-container">
                     @for(executedCommand of executedCommands; track $index) {
                         <div class="row executed-command-line gap-5">
-                            <span class="bold">root&#64;<span class="user-color">guest</span>:~{{ executedCommand.path }}$</span>
+                            <span class="bold">guest&#64;<span class="user-color">root</span>:~{{ executedCommand.path }}$</span>
                             <span>{{ executedCommand.command }}</span>
                         </div>
                         @if(isCommandSent) {
@@ -60,7 +60,7 @@
                 </div>
             }
             <div class="input-line row gap-5" [class.none]="localRequests.isInputPassword" [class.isFetchingOrEditing]="localRequests.isEditing" id="input-line">
-                <span class="bold" [class.isFetchingOrEditing]="httpRequests.isFetching || localRequests.isEditing">root&#64;<span class="user-color">guest</span>:~{{ currentPathString }}$</span>
+                <span class="bold" [class.isFetchingOrEditing]="httpRequests.isFetching || localRequests.isEditing">guest&#64;<span class="user-color">root</span>:~{{ currentPathString }}$</span>
                 <textarea #commandInput autoGrow [(ngModel)]="command" (keydown)="selectCommand($event, command)"></textarea>
             </div>
             <div class="row gap-15 password-input-container" [class.none]="!localRequests.isInputPassword">
