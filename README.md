@@ -1,59 +1,146 @@
-# Portfolio
+# Web-Based CLI
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.7.
+A fully interactive command-line interface built for the web.  
+It simulates a Linux/Unix-like terminal experience in the browser, complete with a virtual file system, command chaining with `&&`, sudo functionality, easter eggs, and a beginner-friendly `--man` flag for every command.
 
-## Development server
+Live demo: [lukasbusch.dev/cli](https://lukasbusch.dev/cli)
 
-To start a local development server, run:
+---
+
+## Features
+
+* 41+ commands covering:
+  * File system operations (`ls`, `cd`, `cat`, `nano`, `touch`, `mkdir`, `rm`, ...)
+  * Network tools (`ping`, `traceroute`, `dig`, `nslookup`, `curl`, ...)
+  * Security and TLS utilities (`openssl`, `ciphers`, `tlschain`, ...)
+  * System utilities (`pwd`, `uptime`, `whoami`, `uname`, ...)
+  * Extras (`qr`, `shorten`, `weather`, ...)
+* WYSIWYG Nano editor for creating and editing `.txt` files directly in the browser terminal
+* Virtual file system with directories, files, and persistent editing
+* Command chaining with `&&`
+* Sudo mode for unlocking hidden behaviors
+* Easter eggs and secret commands
+* Responsive design for desktop and mobile
+* Universal `--man` flag for detailed, educational documentation of each command  
+  * Synopsis  
+  * Purpose  
+  * Examples with explanation  
+  * Notes about limitations or differences from real Linux/Unix  
+  * Related commands for further exploration  
+  * Simple explanations for beginners who may be new to the CLI  
+
+---
+
+## Backend
+
+This project uses a dedicated VPS backend with **Nginx** and **Node.js** for:  
+* CORS handling (to allow browser-based requests without errors)  
+* Fetching real-world data such as WHOIS, GeoIP, TLS certificates etc., that are not accessible directly from the frontend  
+
+---
+
+## Available Commands
+
+### General
+* `help` - Show all available commands  
+* `story` - Show the story about the CLI's development  
+* `exit` - Close the console and return to the portfolio page  
+* `clear` - Clear the terminal
+
+### File System
+* `pwd`  
+* `cd DIR`  
+* `ls`  
+* `cat FILE`  
+* `nano FILE`  
+* `touch FILE`  
+* `mkdir DIR`  
+* `rmdir DIR`  
+* `rm FILE`  
+* `echo TEXT...`  
+
+### System
+* `reboot` - Reload page  
+* `color FOREGROUND [BACKGROUND]` - Set text and background color  
+* `color reset` - Reset colors  
+* `date`  
+* `uptime`  
+* `history`  
+* `whoami`  
+* `uname`  
+
+### Networking
+* `ipaddr` - Show public IP  
+* `whois DOMAIN | IP [--json]`  
+* `ping HOST`  
+* `traceroute HOST`  
+* `dig HOST`  
+* `nslookup HOST`  
+* `curl URL [-I]`  
+* `status HOST`  
+* `geoip IP | DOMAIN [--json]`  
+* `asn IP | DOMAIN [--json]`  
+* `reverseip IP | DOMAIN [--all] [--json]`  
+* `networkinfo` - Show downlink, RTT, connection type  
+
+### Security and TLS
+* `openssl DOMAIN [--json]` - Certificate information  
+* `ciphers DOMAIN [--port N] [--json]` - Negotiated TLS protocol and cipher  
+* `tlschain DOMAIN [--port N] [--json]` - Full certificate chain  
+
+### Extras
+* `battery` - Battery status  
+* `weather CITY` - Current weather  
+* `shorten URL` - URL shortener  
+* `qr URL` - Generate QR code  
+
+---
+
+## The `--man` Flag
+
+Every command supports an additional `--man` flag.  
+This prints extended documentation in the terminal, including:  
+* Command synopsis  
+* Purpose  
+* Practical examples with explanations  
+* Notes about limitations or browser-specific issues  
+* Related commands for deeper learning  
+* Beginner-friendly explanations to make CLI concepts accessible  
+
+This makes the project educational for users who are new to the command line, while still providing useful features for experienced users.
+
+---
+
+## Easter Eggs
+
+Hidden commands and responses are included. Try using `sudo` or experimenting with unusual inputs to discover them.
+
+---
+
+## Tech Stack
+
+* Angular (v19)  
+* TypeScript  
+* SCSS  
+* Nginx (reverse proxy, CORS handling)  
+* Node.js (backend services for external data and APIs)  
+* Custom virtual file system  
+* Browser APIs for networking, battery, and system information  
+
+---
+
+## Getting Started
 
 ```bash
+# Clone repo
+git clone https://github.com/USERNAME/cli-project.git
+cd cli-project
+
+# Install dependencies
+npm install
+
+# Run locally
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# Build for production
+ng build --configuration production
