@@ -30,10 +30,15 @@
     width: 100%;
     height: 30px;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     background-color: $dark-blue;
     padding: 0 5px;
+
+    h1 {
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: $blue;
+    }
 
     img {
         height: 15px;
@@ -76,7 +81,6 @@
     }
 
     span, pre {
-        // font-family: 'OCRAbyBT', sans-serif;
         font-size: 1.1rem;
         font-weight: 400;
         color: var(--txt-white);
@@ -113,7 +117,6 @@
         textarea {
             width: 100%;
             font-size: 1.1rem;
-            // font-family: 'OCRAbyBT', sans-serif;
             font-weight: 400;
             color: var(--txt-white);
             border: none;
@@ -158,7 +161,6 @@
             width: 100%;
             height: 100%;
             font-size: 1rem;
-            // font-family: 'OCRAbyBT', sans-serif;
             font-weight: 400;
             background-color: $grey;
             color: var(--txt-white);

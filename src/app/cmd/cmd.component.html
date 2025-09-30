@@ -1,9 +1,10 @@
 <div id="cmd" class="section-container center">
-    <div #terminalContainer class="terminal column">
-        <div class="header">
+    <div #terminalContainer class="terminal column" role="main" elementtiming="terminal">
+        <div class="header row between">
+            <div class="empty-space"></div>
+            <h1>Web CLI</h1>
             <img (click)="utils.goToPortfolio()" src="img/close.svg">
         </div>
-
         
         <div #contentContainer [class.no-scroll]="localRequests.isEditing" class="content-container" (click)="focusInput($event)">
             <div class="greeting">
