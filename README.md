@@ -144,7 +144,7 @@ Hidden commands and responses are included. Try using `sudo` or experimenting wi
 
 ## Author
 
-Built by [Lukas Busch](https://lukasbusch.dev/main)
+Built by [Lukas Busch](https://lukasbusch.dev/main)  
 If you find this project interesting, please consider giving the repository a star.
 
 ---
