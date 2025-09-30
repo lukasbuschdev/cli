@@ -134,6 +134,21 @@ Hidden commands and responses are included. Try using `sudo` or experimenting wi
 
 ---
 
+## Notes
+
+* This CLI is for demonstration and educational purposes and is not a full Linux shell
+* Some commands are simulated, others use real APIs through the Node.js backend
+* Real equivalents are suggested in --man outputs where applicable
+
+---
+
+## Author
+
+Built by[Lukas Busch](https://lukasbusch.dev/main)
+If you find this project interesting, please consider giving the repository a star.
+
+---
+
 ## Getting Started
 
 ```bash
@@ -147,5 +162,5 @@ npm install
 # Run locally
 ng serve
 
-# Build for production
-ng build --configuration production
+# Open http://localhost:4200 in your browser.
+```
