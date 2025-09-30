@@ -1,7 +1,7 @@
 # Web-Based CLI
 
 A fully interactive command-line interface built for the web.  
-It simulates a Linux/Unix-like terminal experience in the browser, complete with a virtual file system, command chaining with `&&`, sudo functionality, easter eggs, and a beginner-friendly `--man` flag for every command.
+It simulates a Linux/Unix-like terminal experience in the browser, complete with a virtual file system, command chaining with `&&`, sudo functionality, easter eggs, a beginner-friendly `--man` flag for every command, tab autocompletion, and arrow key navigation for command history.
 
 Live demo: [lukasbusch.dev/cli](https://lukasbusch.dev/cli)
 
@@ -16,11 +16,16 @@ Live demo: [lukasbusch.dev/cli](https://lukasbusch.dev/cli)
   * System utilities (`pwd`, `uptime`, `whoami`, `uname`, ...)
   * Extras (`qr`, `shorten`, `weather`, ...)
 * WYSIWYG Nano editor for creating and editing `.txt` files directly in the browser terminal
+* Nano supports standard keyboard shortcuts:
+  * `Ctrl+O` to save and close the file
+  * `Ctrl+X` to close without saving
 * Virtual file system with directories, files, and persistent editing
 * Command chaining with `&&`
 * Sudo mode for unlocking hidden behaviors
 * Easter eggs and secret commands
 * Responsive design for desktop and mobile
+* Tab autocompletion for faster typing
+* Arrow up and arrow down for navigating previous commands
 * Universal `--man` flag for detailed, educational documentation of each command  
   * Synopsis  
   * Purpose  
@@ -35,7 +40,7 @@ Live demo: [lukasbusch.dev/cli](https://lukasbusch.dev/cli)
 
 This project uses a dedicated VPS backend with **Nginx** and **Node.js** for:  
 * CORS handling (to allow browser-based requests without errors)  
-* Fetching real-world data such as WHOIS, GeoIP, TLS certificates etc., that are not accessible directly from the frontend  
+* Fetching real-world data such as WHOIS, GeoIP, TLS certificates, and other information that are not accessible directly from the frontend  
 
 ---
 
