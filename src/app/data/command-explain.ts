@@ -460,5 +460,20 @@ export const EXPLAIN: Record<string, Explain> = {
       'Not all browsers support this API; on unsupported browsers, a message will be shown.',
       'Equivalent real CLI: none. This is a browser-only API without a direct Linux/Unix command counterpart.'
     ]
+  },
+
+  storage: {
+    name: 'storage',
+    synopsis: 'storage',
+    purpose: 'Display information about browser storage: quota usage, local/session storage size, and IndexedDB availability.',
+    examples: [
+      { cmd: 'storage', why: 'Check how much browser storage is in use and what is available.' }
+    ],
+    notes: [
+      'Shows quota/usage from `navigator.storage.estimate()`, including approximate bytes used and total quota.',
+      'Lists keys and estimated size of values stored in localStorage and sessionStorage.',
+      'Reports whether IndexedDB is supported.',
+      'Equivalent real CLI: none. This is a browser-only feature without direct Linux/Unix counterpart.'
+    ]
   }
 };

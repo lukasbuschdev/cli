@@ -94,6 +94,10 @@ export const AVAILABLE_COMMANDS: typeCommandList[] = [
     description: 'Shows the current time and how long the session has been running (dd hh:mm:ss), followed by the user count and system load averages for the past 1, 5, and 15 minutes.',
   },
   {
+    command: 'storage',
+    description: 'Displays browser storage details, including quota usage from the Storage API, keys and sizes in local/session storage, and whether IndexedDB is supported.'
+  },
+  {
     command: 'history',
     description: 'Displays the list of all commands executed during the current terminal session.',
   },

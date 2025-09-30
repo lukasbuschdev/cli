@@ -40,5 +40,6 @@ export const COMMAND_CONFIG: typeCommandMap = {
   reverseip: 'reverseip',
   ciphers: 'ciphers',
   tlschain: 'tlschain',
-  networkinfo: 'networkinfo'
+  networkinfo: 'networkinfo',
+  storage: 'storage'
 };

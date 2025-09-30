@@ -63,7 +63,8 @@ export const AVAILABLE_DIRECTORIES: typeDirectory[] = [
                   '38\treverseip\n' +
                   '39\tciphers\n' + 
                   '40\ttlschain\n' +
-                  '41\tnetworkinfo\n'
+                  '41\tnetworkinfo\n' + 
+                  '42\tstorage\n'
               },
             ],
           },
