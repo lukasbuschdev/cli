@@ -50,58 +50,58 @@ This project uses a dedicated VPS backend with **Nginx** and **Node.js** for:
 * `help` - Show all available commands  
 * `story` - Show the story about the CLI's development  
 * `exit` - Close the console and return to the portfolio page  
-* `clear` - Clear the terminal
+* `clear` - Clear the terminal screen and scrollback buffer  
 
 ### File System
-* `pwd`  
-* `cd DIR`  
-* `ls`  
-* `cat FILE`  
-* `nano FILE`  
-* `touch FILE`  
-* `mkdir DIR`  
-* `rmdir DIR`  
-* `rm FILE`  
-* `echo TEXT...`  
+* `pwd` - Print working directory  
+* `cd DIR` - Change current directory  
+* `ls` - List files and folders in current directory  
+* `cat FILE` - Display file content  
+* `nano FILE` - Open simple text editor for FILE (.txt)  
+* `touch FILE...` - Create one or more new `.txt` files  
+* `mkdir DIR...` - Create one or more directories  
+* `rmdir DIR...` - Remove one or more empty directories  
+* `rm FILE` - Remove one or more files  
+* `echo TEXT...` - Print given text to output  
 
 ### System
-* `reboot` - Reload page  
-* `color FOREGROUND [BACKGROUND]` - Set text and background color  
-* `color reset` - Reset colors  
-* `date`  
-* `uptime`  
-* `history`  
-* `whoami`  
-* `uname`  
-* `storage` - Display information about browser storage: quota usage, local/session storage size, and IndexedDB availability  
-* `perf [--top N] [--json]` - One-shot snapshot of page performance: timings, resource stats, and metrics like LCP/CLS  
+* `reboot` - Reload the page  
+* `color FOREGROUND [BACKGROUND]` - Set text and background color (hex codes)  
+* `color reset` - Restore default colors  
+* `date` - Show current date and time  
+* `uptime` - Show session uptime and load averages  
+* `history` - Show list of commands used in current session  
+* `whoami` - Show current user/session identifier  
+* `uname` - Show system info (userAgent, platform, screen, etc.)  
+* `storage` - Show browser storage usage, local/session storage, and IndexedDB support  
+* `perf [--top N] [--json]` - Snapshot page performance metrics and resource stats  
 
 ### Networking
-* `ipaddr` - Show public IP  
-* `whois DOMAIN | IP [--json]`  
-* `ping HOST`  
-* `traceroute HOST`  
-* `dig HOST`  
-* `nslookup HOST`  
-* `curl URL [-I]`  
-* `status HOST`  
-* `geoip IP | DOMAIN [--json]`  
-* `asn IP | DOMAIN [--json]`  
-* `reverseip IP | DOMAIN [--all] [--json]`  
-* `networkinfo` - Show downlink, RTT, connection type  
-* `robots URL [--ua AGENT] [--json]` - Fetch and pretty-print robots.txt summary  
-* `sitemap URL [--top N] [--json]` - Fetch and summarize sitemap.xml or sitemap index  
+* `ipaddr` - Show current public IP  
+* `whois DOMAIN | IP [--json]` - Query WHOIS/RDAP for domain or IP  
+* `ping HOST` - Test connectivity and measure latency  
+* `traceroute HOST` - Trace network path and hops to host  
+* `dig HOST` - Perform DNS lookup and show detailed records  
+* `nslookup HOST` - Resolve domain to IP(s) via DNS servers  
+* `curl URL [-I]` - Fetch content or headers from URL  
+* `status HOST` - Fetch HTTP status code and text for host  
+* `geoip IP | DOMAIN [--json]` - Lookup geolocation, ISP, ASN, timezone  
+* `asn IP | DOMAIN [--json]` - Show Autonomous System info (AS number/name, ISP)  
+* `reverseip IP | DOMAIN [--all] [--json]` - Perform reverse DNS (PTR) lookups  
+* `networkinfo` - Show downlink, RTT, connection type, Save-Data flag  
+* `robots URL [--ua AGENT] [--json]` - Fetch and summarize robots.txt rules and sitemaps  
+* `sitemap URL [--top N] [--json]` - Fetch and summarize sitemap XML (counts, lastmod, entries)  
 
 ### Security and TLS
-* `openssl DOMAIN [--json]` - Certificate information  
-* `ciphers DOMAIN [--port N] [--json]` - Negotiated TLS protocol and cipher  
-* `tlschain DOMAIN [--port N] [--json]` - Full certificate chain  
+* `openssl DOMAIN [--json]` - Show TLS certificate info  
+* `ciphers DOMAIN [--port N] [--json]` - Show negotiated TLS protocol and cipher  
+* `tlschain DOMAIN [--port N] [--json]` - Show full certificate chain  
 
 ### Extras
-* `battery` - Battery status  
-* `weather CITY` - Current weather  
-* `shorten URL` - URL shortener  
-* `qr URL` - Generate QR code  
+* `battery` - Show battery level and charging status  
+* `weather CITY` - Show current weather conditions  
+* `shorten URL` - Shorten a URL  
+* `qr URL` - Generate QR code for a URL    
 
 ---
 
