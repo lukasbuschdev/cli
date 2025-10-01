@@ -53,6 +53,8 @@ import { BatteryService } from '../services/local-commands/battery.service';
 import { NetworkinfoService } from '../services/local-commands/networkinfo.service';
 import { StorageService } from '../services/local-commands/storage.service';
 import { PerfService } from '../services/local-commands/perf.service';
+import { RobotsService } from '../services/http-commands/robots.service';
+import { SitemapService } from '../services/http-commands/sitemap.service';
 
 @Component({
   selector: 'app-cmd',
@@ -113,6 +115,8 @@ export class CmdComponent {
   reverseipService = inject(ReverseipService);
   ciphersService = inject(CiphersService);
   tslchainService = inject(TlschainService);
+  robotsService = inject(RobotsService);
+  sitemapService = inject(SitemapService);
 
   @ViewChild(AutoGrowDirective) autoGrow!: AutoGrowDirective;
   @ViewChild('terminalContainer', { static: false }) terminalContainer!: ElementRef<HTMLElement>;
@@ -546,5 +550,13 @@ export class CmdComponent {
 
   tlschain(command: string): void {
     this.tslchainService.tlschain(command, this.executedCommands, this.currentPathString, this.scrollDown.bind(this));
+  }
+
+  robots(command: string): void {
+    this.robotsService.robots(command, this.executedCommands, this.currentPathString);
+  }
+
+  sitemap(command: string): void {
+    this.sitemapService.sitemap(command, this.executedCommands, this.currentPathString);
   }
 }

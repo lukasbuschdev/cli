@@ -106,6 +106,10 @@ export const AVAILABLE_COMMANDS: typeCommandList[] = [
     description: 'Displays the list of all commands executed during the current terminal session.',
   },
   {
+    command: 'networkinfo',
+    description: 'Displays information about the current network connection, including estimated downlink speed (Mb/s), effective type (slow-2g/2g/3g/4g), round-trip time (ms), Save-Data preference, and connection type (e.g., wifi, cellular). Falls back with a message if the Network Information API is not supported by the browser.'
+  },
+  {
     command: 'ipaddr',
     description: 'Displays your current public IP address as reported by an external service.',
   },
@@ -169,8 +173,12 @@ export const AVAILABLE_COMMANDS: typeCommandList[] = [
     command: 'tlschain DOMAIN [--port N] [--json]',
     description: 'Show the full presented TLS certificate chain (leaf → intermediates → root) and validity.'
   },
-  {
-    command: 'networkinfo',
-    description: 'Displays information about the current network connection, including estimated downlink speed (Mb/s), effective type (slow-2g/2g/3g/4g), round-trip time (ms), Save-Data preference, and connection type (e.g., wifi, cellular). Falls back with a message if the Network Information API is not supported by the browser.'
+  { 
+    command: 'robots [--ua AGENT] [--json]',  
+    description: 'Fetches and summarizes robots.txt: user-agent sections, Allow/Disallow rules, Crawl-delay, and declared Sitemaps.'
+  },
+  { 
+    command: 'sitemap URL [--top N] [--json]', 
+    description: 'Fetches and summarizes sitemap XML: counts, lastmod range, and top entries (handles sitemap index vs. urlset).'
   }
 ];

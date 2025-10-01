@@ -492,5 +492,36 @@ export const EXPLAIN: Record<string, Explain> = {
       'Memory readings (`performance.memory`) are non-standard and mostly available in Chromium-based browsers.',
       'Equivalent real CLI: none (browser-only). Closest desktop analogs are Lighthouse or WebPageTest.'
     ]
+  },
+
+  robots: {
+    name: 'robots',
+    synopsis: 'robots URL [--ua AGENT] [--json]',
+    purpose: 'Fetch and pretty-print robots.txt: user-agent sections, Allow/Disallow counts, Crawl-delay, and listed Sitemaps.',
+    examples: [
+      { cmd: 'robots https://example.com/robots.txt', why: 'See which paths are disallowed and which sitemaps are declared.' },
+      { cmd: 'robots https://example.com/robots.txt --ua Googlebot', why: 'Check the rules that would apply to a specific crawler.' },
+      { cmd: 'robots https://example.com --json', why: 'Dump a structured JSON view of the parsed robots.txt.' }
+    ],
+    notes: [
+      'If you pass a bare origin (e.g., https://example.com), the command will request /robots.txt automatically.',
+      'Rules precedence follows robots.txt sections by user-agent; the most specific matching UA applies, falling back to *.',
+      'Real CLI analog: `curl https://example.com/robots.txt` + manual reading.'
+    ]
+  },
+  
+  sitemap: {
+    name: 'sitemap',
+    synopsis: 'sitemap URL [--top N] [--json]',
+    purpose: 'Fetch and summarize sitemaps (urlset or sitemapindex): total URLs, lastmod range, and top entries by recency.',
+    examples: [
+      { cmd: 'sitemap https://example.com/sitemap.xml', why: 'Quick count and freshness of URLs in the sitemap.' },
+      { cmd: 'sitemap https://example.com/sitemap.xml --top 5', why: 'List the 5 most recently updated entries.' },
+      { cmd: 'sitemap https://example.com/sitemap_index.xml --json', why: 'Dump structured JSON of nested sitemaps and URLs.' }
+    ],
+    notes: [
+      'Supports both <urlset> and <sitemapindex>. Gzipped sitemaps may require your proxy if the origin blocks CORS.',
+      'Real CLI analogs: `curl` + `xmllint`/`xq`, or online tools; this provides a quick in-browser summary.'
+    ]
   }
 };
