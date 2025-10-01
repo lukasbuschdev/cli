@@ -10,7 +10,7 @@ export class RobotsService {
 
   private readonly PROXY = 'https://proxy.lukasbusch.dev/robots';
 
-  robots(command: string, executedCommands: typeCommand[], currentPathString: string): void {
+  robots(command: string, executedCommands: typeCommand[], currentPathString: string, scrollDown: () => void): void {
     const tokens = command.trim().split(/\s+/);
     const arg = tokens.slice(1).find(t => !t.startsWith('--')) || '';
     const ua = this.extractUa(tokens);
@@ -18,6 +18,7 @@ export class RobotsService {
 
     if (!arg) {
       executedCommands.push({ command, output: 'robots: usage error: URL or domain required', path: currentPathString });
+      scrollDown();
       return;
     }
 
@@ -28,38 +29,42 @@ export class RobotsService {
     const url = this.buildProxyUrl(arg, ua, rawFlag);
 
     if (rawFlag) {
-      this.httpRequestRawText(url, executedCommands, traceIndex); // for raw text passthrough
+      this.httpRequestRawText(url, executedCommands, traceIndex, scrollDown); // for raw text passthrough
     } else {
-      this.httpRequestJsonSummary(url, executedCommands, traceIndex, ua); // for JSON summary
+      this.httpRequestJsonSummary(url, executedCommands, traceIndex, ua, scrollDown); // for JSON summary
     }
   }
 
-  private httpRequestRawText(url: string, executedCommands: typeCommand[], traceIndex: number): void {
+  private httpRequestRawText(url: string, executedCommands: typeCommand[], traceIndex: number, scrollDown: () => void): void {
     this.httpRequests.http
       .get(url, { responseType: 'text' as const })
       .subscribe({
         next: (body: string) => {
           executedCommands[traceIndex].output += body + (body.endsWith('\n') ? '' : '\n');
           this.httpRequests.isFetching = false;
+          scrollDown();
         },
         error: (err) => {
           executedCommands[traceIndex].output += `Error (robots): ${err?.error?.error || err?.message || 'Unknown error'}\n`;
           this.httpRequests.isFetching = false;
+          scrollDown();
         }
       });
   }
 
-  private httpRequestJsonSummary(url: string, executedCommands: typeCommand[], traceIndex: number, ua: string | null): void {
+  private httpRequestJsonSummary(url: string, executedCommands: typeCommand[], traceIndex: number, ua: string | null, scrollDown: () => void): void {
     this.httpRequests.http
       .get<RobotsPayload>(url) // default responseType is 'json'
       .subscribe({
         next: (body) => {
           executedCommands[traceIndex].output += this.formatSummary(body, ua || undefined);
           this.httpRequests.isFetching = false;
+          scrollDown();
         },
         error: (err) => {
           executedCommands[traceIndex].output += `Error (robots): ${err?.error?.error || err?.message || 'Unknown error'}\n`;
           this.httpRequests.isFetching = false;
+          scrollDown();
         }
       });
   }

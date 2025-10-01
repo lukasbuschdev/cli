@@ -553,10 +553,10 @@ export class CmdComponent {
   }
 
   robots(command: string): void {
-    this.robotsService.robots(command, this.executedCommands, this.currentPathString);
+    this.robotsService.robots(command, this.executedCommands, this.currentPathString, this.scrollDown.bind(this));
   }
 
   sitemap(command: string): void {
-    this.sitemapService.sitemap(command, this.executedCommands, this.currentPathString);
+    this.sitemapService.sitemap(command, this.executedCommands, this.currentPathString, this.scrollDown.bind(this));
   }
 }
