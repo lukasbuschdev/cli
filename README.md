@@ -9,7 +9,7 @@ Live demo: [lukasbusch.dev/cli](https://lukasbusch.dev/cli)
 
 ## Features
 
-* 41+ commands covering:
+* 44+ commands covering:
   * File system operations (`ls`, `cd`, `cat`, `nano`, `touch`, `mkdir`, `rm`, ...)
   * Network tools (`ping`, `traceroute`, `dig`, `nslookup`, `curl`, ...)
   * Security and TLS utilities (`openssl`, `ciphers`, `tlschain`, ...)
@@ -73,6 +73,8 @@ This project uses a dedicated VPS backend with **Nginx** and **Node.js** for:
 * `history`  
 * `whoami`  
 * `uname`  
+* `storage` - Display information about browser storage: quota usage, local/session storage size, and IndexedDB availability  
+* `perf [--top N] [--json]` - One-shot snapshot of page performance: timings, resource stats, and metrics like LCP/CLS  
 
 ### Networking
 * `ipaddr` - Show public IP  
@@ -87,6 +89,8 @@ This project uses a dedicated VPS backend with **Nginx** and **Node.js** for:
 * `asn IP | DOMAIN [--json]`  
 * `reverseip IP | DOMAIN [--all] [--json]`  
 * `networkinfo` - Show downlink, RTT, connection type  
+* `robots URL [--ua AGENT] [--json]` - Fetch and pretty-print robots.txt summary  
+* `sitemap URL [--top N] [--json]` - Fetch and summarize sitemap.xml or sitemap index  
 
 ### Security and TLS
 * `openssl DOMAIN [--json]` - Certificate information  
