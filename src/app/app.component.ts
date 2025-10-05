@@ -16,7 +16,7 @@ export class AppComponent {
     const canvas = document.getElementById('canvas') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d')!;
     let lastTime = 0;
-    let fps = window.innerWidth <= 600 ? 15 : 30;
+    let fps = 15;
     let nextFrame = 1000/fps;
     let timer = 0;
 
@@ -29,7 +29,7 @@ export class AppComponent {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
-      fps = window.innerWidth <= 600 ? 15 : 30;
+      fps = 15;
       nextFrame = 1000 / fps;
 
       effect.resize(canvas.width, canvas.height);
