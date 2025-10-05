@@ -33,12 +33,22 @@
     align-items: center;
     background-color: $dark-blue;
     padding: 0 5px;
+    
+    .link {
+        width: 0;
+        font-family: 'Exo 2';
+        font-size: 0.8rem;
+        color: $blue;
+        overflow: hidden;
+        cursor: pointer;
+    }
 
     span {
         font-size: 1.1rem;
         font-weight: 400;
         color: $blue;
     }
+
 
     img {
         height: 15px;
@@ -274,5 +284,13 @@
         color: $dark-blue;
         border: none;
         padding: 10px 15px;
+    }
+}
+
+@media(max-width: 650px) {
+    .header {
+        .link {
+            width: fit-content;
+        }
     }
 }

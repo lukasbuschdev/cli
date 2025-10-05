@@ -20,15 +20,31 @@
   }
 
   .wrapper {
+    height: 100vh;
+    height: 100dvh;
     position: relative;
     z-index: 1;
     background-color: transparent;
+
+    .link {
+      height: 30px;
+      width: 200px;
+      position: absolute;
+      bottom: 5vh;
+      left: 50%;
+      transform: translateX(-100px);
+      font-family: 'Exo 2';
+      color: $blue;
+      text-align: center;
+      cursor: pointer;
+    }
   }
-  
-  app-header,
-  router-outlet,
-  app-footer {
-    position: relative;
-    background-color: transparent;
+
+  @media(max-width: 650px) {
+    .wrapper {
+      .link {
+        display: none;
+      }
+    }
   }
   

@@ -7,7 +7,7 @@ export class Symbol {
     canvasHeight: any;
 
     constructor(x: any, y: any, fontSize: number, canvasHeight: any) {
-        this.characters = '01 ';
+        this.characters = '  ア   ァ  カ  サ  タ  ナ  ハ  マ  ヤ  ャ  ラ  ダ  バ  ピ  ウ  ゥ  ク  ス  ツ  ヌ  フ  ム  ユ  ホ  ゴ  ゾ  ド  ボ  ヴ  ッ  ン  0  1  2  3  4  5  6  7  8  9  <  > ';
         this.x = x;
         this.y = y;
         this.fontSize = fontSize;
@@ -26,4 +26,3 @@ export class Symbol {
         }
     }
 }
-// this.characters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ<>';
