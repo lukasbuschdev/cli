@@ -29,14 +29,6 @@
   font-weight: 600;
   src: url('/media/exo-2-v24-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-/* exo-2-800 - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Exo 2';
-  font-style: normal;
-  font-weight: 800;
-  src: url('/media/exo-2-v24-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
 
 /* OCRAbyBT - latin */
 @font-face {
@@ -56,12 +48,13 @@
   scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, span, a, p, li {
+span, a, p, li {
   word-spacing: 5px;
   font-family: $font;
+  font-weight: 300;
 }
 
-span, li, a, p, button {
+button {
   font-weight: 300;
 }
 
@@ -83,31 +76,15 @@ p, a, button {
   align-items: center;
 }
 
-.align-center {
-  display: flex;
-  align-items: center;
-}
-
 .left {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.right {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
 .between {
   display: flex;
   justify-content: space-between;
-}
-
-.around {
-  display: flex;
-  justify-content: space-around;
 }
 
 .column {
@@ -128,13 +105,6 @@ p, a, button {
   .gap-#{$i * 5} {
     gap: px($i * 5);
   }
-}
-
-h1, h2, h3, h4 {
-  font-family: $font;
-  line-height: 1;
-  color: $blue;
-  text-align: center;
 }
 
 .hidden {
