@@ -3,7 +3,7 @@
         <div class="header row between">
             <a class="link" href="https://lukasbusch.dev/privacy-policy">Privacy policy</a>
             <span>Web CLI</span>
-            <img (click)="utils.goToPortfolio()" src="img/close.svg">
+            <img (click)="utils.goToPortfolio()" src="img/close.svg" alt="close">
         </div>
         
         <div #contentContainer [class.no-scroll]="localRequests.isEditing" class="content-container" (click)="focusInput($event)">
@@ -30,7 +30,7 @@
                                         <span>GNU nano 6.2</span>
                                         <span>{{ localRequests.openedFile.name }}</span>
                                     </header>
-                                    <textarea #nanoInput [(ngModel)]="localRequests.openedFile.data" (keydown)="selectCommand($event)"></textarea>
+                                    <textarea #nanoInput [(ngModel)]="localRequests.openedFile.data" (keydown)="selectCommand($event)" aria-label="Nano input"></textarea>
                                     <div class="nano-commands row gap-25 left">
                                         <div class="row gap-10">
                                             <span>^X</span>
@@ -52,7 +52,7 @@
                                     </div>
                                 }
                             } @else if(executedCommand.qrPath ) {
-                                <img [src]="executedCommand.qrPath" alt="QR">
+                                <img [src]="executedCommand.qrPath" alt="QR" alt="QR code">
                             } @else {
                                 <pre>{{ executedCommand.output }}</pre>
                             }
@@ -62,7 +62,7 @@
             }
             <div class="input-line row gap-5" [class.none]="localRequests.isInputPassword" [class.isFetchingOrEditing]="localRequests.isEditing" id="input-line">
                 <span class="bold" [class.isFetchingOrEditing]="httpRequests.isFetching || localRequests.isEditing">guest&#64;<span class="user-color">root</span>:~{{ currentPathString }}$</span>
-                <textarea #commandInput autoGrow [(ngModel)]="command" (keydown)="selectCommand($event, command)"></textarea>
+                <textarea #commandInput autoGrow [(ngModel)]="command" (keydown)="selectCommand($event, command)" aria-label="Command input"></textarea>
             </div>
             <div class="row gap-15 password-input-container" [class.none]="!localRequests.isInputPassword">
                 <span>Password:</span>
