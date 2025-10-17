@@ -102,8 +102,8 @@ export const AVAILABLE_COMMANDS: typeCommandList[] = [
     description: 'Captures a snapshot of page performance metrics, including navigation type, time to first byte (TTFB), DOMContentLoaded, load event, paint timings (FP/FCP/LCP), cumulative layout shift (CLS), JS heap usage (if available), and the top slowest/largest resource requests.'
   },
   {
-    command: 'history',
-    description: 'Displays the list of all commands executed during the current terminal session.',
+    command: 'history [N]',
+    description: 'Print the command history list. Accepts an optional numeric argument to limit output to the most recent commands.',
   },
   {
     command: 'networkinfo',

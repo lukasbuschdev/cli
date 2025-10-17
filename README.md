@@ -70,7 +70,7 @@ This project uses a dedicated VPS backend with **Nginx** and **Node.js** for:
 * `color reset` - Restore default colors  
 * `date` - Show current date and time  
 * `uptime` - Show session uptime and load averages  
-* `history` - Show list of commands used in current session  
+* `history [N]` – Show persistent command history, or only the last N entries if specified.
 * `whoami` - Show current user/session identifier  
 * `uname` - Show system info (userAgent, platform, screen, etc.)  
 * `storage` - Show browser storage usage, local/session storage, and IndexedDB support  

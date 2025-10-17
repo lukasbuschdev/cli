@@ -247,12 +247,14 @@ export const EXPLAIN: Record<string, Explain> = {
 
   history: {
     name: 'history',
-    synopsis: 'history',
-    purpose: 'List commands executed during this session.',
+    synopsis: 'history [limit]',
+    purpose: 'Display a list of previously executed commands stored in the backend database.',
     examples: [
-      { cmd: 'history', why: 'Review what you’ve run so far.' }
+      { cmd: 'history', why: 'Show all commands from oldest to newest.' },
+      { cmd: 'history 10', why: 'Show the last 10 most recent commands.' }
     ],
-    seeAlso: ['help', 'clear']
+    seeAlso: ['help', 'clear'],
+    notes: ['Command history is persistent across sessions and stored on a remote server.']
   },
 
   weather: {

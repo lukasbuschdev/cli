@@ -48,7 +48,7 @@ import { RmService } from '../services/local-commands/rm.service';
 import { TouchService } from '../services/local-commands/touch.service';
 import { SaveFileService } from '../services/local-commands/save-file.service';
 import { PwdService } from '../services/local-commands/pwd.service';
-import { HistoryService } from '../services/local-commands/history.service';
+import { HistoryService } from '../services/http-commands/history.service';
 import { BatteryService } from '../services/local-commands/battery.service';
 import { NetworkinfoService } from '../services/local-commands/networkinfo.service';
 import { StorageService } from '../services/local-commands/storage.service';
@@ -207,8 +207,17 @@ export class CmdComponent {
         this.executedCommands.push({ command, output: `${ command }: command not found\nType 'help' for more information`, path: this.currentPathString });
       }
     }
+    this.logCommand(command)
   }
+  
+  logCommand(command: string) {
+    const cmd = command.trim();
+    const body = { cmd };
+    const url = `https://proxy.lukasbusch.dev/history`;
 
+    this.httpRequests.http.post(url, body).subscribe({ next: () => {}, error: () => {} });
+  }
+  
   checkIfSudo(command: string): boolean{
     if(command.startsWith('sudo ') && !this.localRequests.hasRootPermissions) {
       this.pendingCommand = command;
@@ -447,10 +456,6 @@ export class CmdComponent {
   exit(): void {
     location.href = "https://lukasbusch.dev/main";
   }
-  
-  history(command: string): void {
-    this.historyService.history(command, this.executedCommands, this.currentPathString);
-  }
 
   battery(command: string): void {
     this.batteryService.battery(command, this.executedCommands, this.currentPathString);
@@ -558,5 +563,9 @@ export class CmdComponent {
 
   sitemap(command: string): void {
     this.sitemapService.sitemap(command, this.executedCommands, this.currentPathString, this.scrollDown.bind(this));
+  }
+
+  history(command: string): void {
+    this.historyService.history(command, this.executedCommands, this.currentPathString, this.scrollDown.bind(this));
   }
 }
