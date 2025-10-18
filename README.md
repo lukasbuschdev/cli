@@ -133,6 +133,7 @@ Hidden commands and responses are included. Try using `sudo` or experimenting wi
 * SCSS  
 * Nginx (reverse proxy, CORS handling)  
 * Node.js (backend services for external data and APIs)  
+* Python and SQLite (on backend for persistent command history storage)
 * Custom virtual file system  
 * Browser APIs for networking, battery, and system information  
 
@@ -141,7 +142,7 @@ Hidden commands and responses are included. Try using `sudo` or experimenting wi
 ## Notes
 
 * This CLI is for demonstration and educational purposes and is not a full Linux shell
-* Some commands are simulated, others use real APIs through the Node.js backend
+* Few commands are simulated, others use real APIs through the Node.js backend
 * Real equivalents are suggested in --man outputs where applicable
 
 ---
@@ -157,7 +158,7 @@ If you find this project interesting, please consider giving the repository a st
 
 ```bash
 # Clone repo
-git clone https://github.com/USERNAME/cli-project.git
+git clone https://github.com/lukasbuschdev/cli-project.git
 cd cli-project
 
 # Install dependencies
